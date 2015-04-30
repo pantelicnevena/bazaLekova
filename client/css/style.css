@@ -1,0 +1,78 @@
+.md-whiteframe-z1 {
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.ng-binding{
+    margin: 6px 0;
+}
+#pretraga{
+    border-color: rgba(0, 0, 0, 0.54);
+}
+.pretraga_layout {
+    box-shadow: 0px 3px 2px -2px rgba(0, 0, 0, 0.26);
+    min-height: 150px;
+}
+
+.md-hue-2{
+    margin: 0 auto;
+}
+
+.ng-scope.md-default-theme, .md-primary.md-default-theme{
+    background-color: #4caf50;
+}
+
+p.ng-binding{
+  margin: 6px 0;
+}
+
+.text p{
+  line-height: 1;
+  margin: 6px 0;
+}
+
+.nazivLeka {
+  font-weight: 400;
+  line-height: 1.65;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.nazivLeka :hover{
+  overflow: visible;
+}
+
+@media (max-height: 640px) {
+    .lista_lekova_layout{
+        max-height: 400px;
+    }
+}
+
+@media (min-height: 641px) {
+    .lista_lekova_layout{
+        max-height: 475px;
+    }
+}
+
+@media (min-height: 768px) {
+    .lista_lekova_layout{
+        max-height: 600px;
+    }
+}
+
+@media (min-height: 900px) {
+    .lista_lekova_layout{
+        max-height: 735px;
+    }
+}
+
+@media (min-height: 1080px) {
+    .lista_lekova_layout{
+        max-height: 915px;
+    }
+}
+
+@media (min-height: 1152px) {
+    .lista_lekova_layout{
+        max-height: 990px;
+    }
+}

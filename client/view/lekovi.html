@@ -1,0 +1,91 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2>
+      <span>Registar lekova</span>
+    </h2>
+  </div>
+</md-toolbar>
+
+<div layout="row" ng-controller="LekoviController">
+  <div flex="25" style="padding: 20px;">
+    <div layout="column" class="pretraga_layout">
+      <md-content>
+        <md-input-container md-no-float flex>
+          <div layout="row">
+            <div flex="10"><ng-md-icon icon="search" size="20"></ng-md-icon></div>
+            <div flex>
+              <form ng-submit="pokreniPretragu(trazeniLek)">
+                <input  ng-model="trazeniLek" type="text" placeholder="Pretraga" id="pretraga" />
+              </form>
+            </div>
+            <div flex="10"><ng-md-icon icon="done" size="12" ng-click="pokreniPretragu(trazeniLek)"></ng-md-icon></div>
+              <!--<div flex="10"><ng-md-icon icon="clear" size="12" onclick="ponistiPretragu()"></ng-md-icon></div>-->
+
+          </div>
+        </md-input-container>
+      </md-content>
+
+      <md-content md-scroll-y flex class="lista_lekova_layout">
+        <md-progress-circular ng-show="!ucitano" class="md-hue-2" md-mode="indeterminate"></md-progress-circular>
+        <md-list>
+          <md-list-item ng-repeat="lek in lekovi | filter:search">
+            <p class="nazivLeka" title="{{lek.registeredName}}"ng-click="prikaz(lek)">{{lek.registeredName}}</p>
+          </md-list-item>
+        </md-list>
+        <p ng-show="prikaziJos" ng-click="loadMore()">Ucitaj jos ...</p>
+      </md-content>
+
+
+
+    </div>
+
+  </div>
+
+  <div flex="55">
+    <md-card ng-show="podaci">
+      <md-toolbar class="md-primary">
+        <div class="md-toolbar-tools">
+          <h2 class="md-flex" ng-model="podaci">{{podaci.registeredName}}</h2>
+        </div>
+      </md-toolbar>
+      <md-progress-circular ng-show="!ucitanSadrzaj" class="md-hue-2" md-mode="indeterminate"></md-progress-circular>
+      <md-card-content>
+        Oblik: {{podaci.activeIngredient}} <br/>
+        Proizvođač: <a onclick="pretrazi(this)">{{podaci.producer}}</a><br/>
+        Terapijska grupa: <a onclick="pretrazi(this)">{{podaci.activeIngredient}}</a><br/>
+        Rezim izdavanja: {{podaci.issuing}}<br/>
+        Lista osiguranja: {{osiguranje}}<br/><br/>
+        Doziranje: <a class="text" ng-bind-html="deliberatelyTrustDangerousSnippet()"></a><br/><br/>
+
+        <md-list>
+          <!--<md-list-item ng-repeat="oblik in oblici">
+              <md-whiteframe class="md-whiteframe-z1" layout  >
+                  Farmaceutski oblik: {{oblik.farmOblik}}<br/>
+                  Pakovanje: {{oblik.pakovanje}}<br/>
+                  Rezim izdavanja: {{oblici.rezimIzdavanja}}
+                  Skladistenje: {{oblik.nacinSkladistenja}}<br/>
+                  Koncentracija aktivnih supstanci: {{oblik.koncAktSupstanci}}<br/>
+                  Broj resenja: {{oblik.brResenja}}<br/>
+                  Datum izdavanja: {{oblik.datumIzdavanja}}<br/>
+                  Datum isteka: {{oblik.datumIsteka}}<br/><br/>
+              </md-whiteframe>
+          </md-list-item><br/>-->
+        </md-list>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div flex style="margin-top: 75px; margin-left: 20px;">
+    <md-content>
+      <md-list>
+        <md-list-item class="md-3-line" ng-repeat="paralela in paralele">
+          <div class="md-list-item-text">
+            <!--<a onclick="pretrazi(this)" ng-click="pretraga(paralela)" class="paralela">{{paralela}}</a>-->
+            <p onclick="pretrazi(this)" class="paralela">{{paralela.description}}</p>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </div>
+</div>
+
+
